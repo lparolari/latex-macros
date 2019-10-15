@@ -1,0 +1,647 @@
+\documentclass[11pt]{article}
+
+\title{\textbf{Latex Macros}}
+\author{Luca Parolari\footnote{luca.parolari23@gmail.com}}
+\date{\today}
+
+\usepackage[T1]{fontenc}     % define T1 charset for out files.
+\usepackage[english]{babel}  % italian latex typo conventions.
+\usepackage[utf8]{inputenc}  % italian symbols.
+\usepackage{csquotes}        % needed by babel.
+\usepackage{amsmath}         % math features.
+\usepackage{amsthm}          % math theorems.
+\usepackage{amssymb}         % math symbols.
+\usepackage{amsbsy}			 % math bold.
+\usepackage{stmaryrd}        % llbrackets, rrbrackets.
+\usepackage{float}           % float management.
+\usepackage[
+backend=biber,
+style=numeric,
+citestyle=numeric            % numeric, alphabetic
+]{biblatex}                  % bib management. %bibtex
+
+\input{prooftree.tex}
+\input{macros.tex}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	This document is a summary of what the \texttt{macros.txt} file contains. Here are listed all usable macros with their sintax, a short descrition and maybe some usage examples. Please refer first to section \ref{intro} in order to get help on how to install this tool and what it needs to work.
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\section{The package}
+\label{intro}
+
+\subsection{How to install}
+\label{install}
+
+\begin{itemize}
+	\item Ensure that required dependencies are satisfied. (See dependencies at \ref{deps}).
+	\item Copy \texttt{macros.tex} and \texttt{prooftree.tex} in your source folder.
+	\item Include the following lines after \emph{usepackage} section and their configurations.
+	\begin{verbatim}
+		... usepackage
+		... package configuration
+		
+		\input{prooftree.tex}
+		\input{macros.tex}
+	\end{verbatim}
+\end{itemize}
+
+\subsection{Usage}
+
+See the section \ref{macros}, use the symbol by typing the \emph{encoding} keyword preceded by a backslash (as an usual latex command).
+
+\subsection{Dependencies}
+\label{deps}
+
+\paragraph{Known dependencies}
+\begin{itemize}
+	\item \texttt{amsmath}
+	\item \texttt{amsthm}
+	\item \texttt{amssymb}
+	\item \texttt{amsbsy}
+	\item \texttt{stmaryrd}
+\end{itemize}
+
+\paragraph{Usepackage code}
+\begin{verbatim}
+\usepackage{amsmath}         % math features.
+\usepackage{amsthm}          % math theorems.
+\usepackage{amssymb}         % math symbols.
+\usepackage{amsbsy}          % math bold.
+\usepackage{stmaryrd}        % llbrackets, rrbrackets.
+\end{verbatim}
+
+\clearpage
+
+
+\section{Macros}
+\label{macros}
+
+\textbf{Note}: this section documets only a small and possibly most important part of implemented macros. For other commands please see \texttt{macros.tex} file.
+
+\subsection{Math}
+
+\subsubsection{Symbols}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\convrg$ & \texttt{convrg} &  \\ 
+		$\divrg$ & \texttt{divrg} &  \\
+		$\diverges$ & \texttt{diverges} & Divergence relation \\
+		$\lambdaop$ & \texttt{lambdaop} &  \\
+		$\defrel{custom}$ & \texttt{defrel\{custom\}} &  \\
+		$\defeq$ & \texttt{defeq} &  \\
+		$\defiff$ & \texttt{defiff} &  \\
+		$\lambdaop$ &  &  \\
+		$\dom$ & \texttt{dom} & Domain function \\
+		$\true$ & \texttt{true} &  \\
+		$\false$ & \texttt{false} &  \\
+		$\emptystring$ & \texttt{emptystring} & \\
+		$\restrict{f}$ & \texttt{restrict\{f\}} & Restriction of a function \\
+		$1 = 1 \quad \law{annotation}$ & \texttt{law\{annotation\}} & Annotation in equation \\
+		$\summary{test}$ & \texttt{summary\{test\}} & Summaries for theorem-like environments \\
+		
+	\end{tabular} 
+\end{table}
+
+\subsubsection{Common sets}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\Nset$ & \texttt{Nset} &  \\ 
+		$\Qset$ & \texttt{Qset} &  \\
+		$\Zset$ & \texttt{Zset} &  \\
+		$\Rset$ & \texttt{Rset} &  \\
+	\end{tabular} 
+\end{table}
+
+\subsubsection{Calligraphic Alphabet}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\calA$ & \texttt{calA} &  \\ 
+		$\calB$ & \texttt{calB} &  \\
+		$\ldots$ & $\ldots$ &  \\
+		$\calZ$ & \texttt{calZ} &  \\
+	\end{tabular} 
+\end{table}
+
+\subsubsection{Function declarations}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\reld{name}{S_1}{S_2}$ & \texttt{reld\{name\}\{$S_1$\}\{$S_2$\}} &  \\ 
+		$\fund{name}{S_1}{S_2}$ & \texttt{fund\{name\}\{$S_1$\}\{$S_2$\}} &  \\
+		$\pard{name}{S_1}{S_2}$ & \texttt{pard\{name\}\{$S_1$\}\{$S_2$\}} &  \\
+	\end{tabular} 
+\end{table}
+
+\subsubsection{Logical stuff}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\st$ & \texttt{st} & Dot user existensial quantification \\ 
+		$\itc$ & \texttt{aaa} & Dot user universal quantification \\
+	\end{tabular} 
+\end{table}
+
+
+
+
+\subsection{Set}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\emptyset$ & \texttt{emptyset} &  \\ 
+		$\wpf$ & \texttt{wpf} &  \\
+		$\sseq$ & \texttt{sseq} &  \\
+		$\sseqf$ & \texttt{sseqf} &  \\
+		$\sslt$ & \texttt{sslt} &  \\
+		$\union$ & \texttt{union} &  \\
+		$\bigunion$ & \texttt{bigunion} &  \\
+		$\inters$ & \texttt{inters} &  \\
+		$\setdiff$ & \texttt{setdiff} &  \\
+		$\sset{1}{B}$ & \texttt{sset\{1\}\{A\}} &  \\
+		$\FI$ & \texttt{setdiff} &  \\
+		$\stimes$ & \texttt{stimes} & Strict cartesian product \\
+		$\spair{S_1}{S_2}$ & \texttt{spair\{$S_1$\}\{$S_2$\}} & Strict cartesian product with operands \\
+	\end{tabular} 
+\end{table}
+
+\subsection{Syntax}
+
+\subsubsection{BNF}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\vbar$ & \texttt{vbar} & \\
+	\end{tabular} 
+\end{table} 
+
+\subsubsection{Abstract syntax}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\Integer$ & \texttt{Integer} &  \\
+		$\Bool$ & \texttt{Bool} &  \\
+		$\Ghost$ & \texttt{Ghost} &  \\
+		$\LE$ & \texttt{LE} &  \\
+		$\LExp$ & \texttt{LExp} &  \\
+		$\FV$ & \texttt{FV} &  \\
+		$\Var$ & \texttt{Var} &  \\
+		$\Pred$ & \texttt{Pred} &  \\
+		$\AExp$ & \texttt{AExp} &  \\
+		$\BExp$ & \texttt{BExp} &  \\
+		$\Com$ & \texttt{Com} &  \\
+		$\Exp$ & \texttt{Exp} &  \\
+		$\ST$ & \texttt{ST} &  \\
+	\end{tabular} 
+\end{table} 
+
+\subsection{Semantics}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\config{x}{y}$ & \texttt{config\{x\}\{y\}} &  \\ 
+		$\denotB{b}{s}$ & \texttt{denotB\{b\}\{s\}} &  \\
+		$\denotA{n}{s}$ & \texttt{denotA\{n\}\{s\}} &  \\
+		$\denotE{e}{s}$ & \texttt{denotE\{e\}\{s\}} &  \\
+		$\denotC{c}{s}$ & \texttt{denotC\{c\}\{s\}} &  \\
+		$\denotBsl{b}$ & \texttt{denotBsl\{b\}} & \texttt{denotB} stateless \\
+		$\denotCsl{c}$ & \texttt{denotCsl\{c\}} & \texttt{denotC} stateless \\
+		$\assign{s}{x}{a}$ & \texttt{assign\{s\}\{x\}\{a\}} &  \\
+		$\bigassign{s}{x}{a}$ & \texttt{bigassign\{s\}\{x\}\{a\}} &  \\
+		$\ssarrow$ & \texttt{ssarrow} & Long arrow \\
+		$\nssarrow$ & \texttt{nssarrow} & Long not arrow \\
+		 & \texttt{subst} & ??? \\
+		 & \texttt{substt} & ??? \\
+		$\funcomp{f}{g}$ & \texttt{funcomp\{f\}\{g\}} &  \\
+	\end{tabular} 
+\end{table} 
+
+\subsubsection{Prooftree}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		 & \texttt{prooftree} & Beginning of prooftree \\
+		 & \texttt{endprooftree} & End of prooftree \\
+		 & \texttt{rulename} & Prooftree rule name \\
+		 & \texttt{justifies} & Allows to insert the judgement \\
+		 & \texttt{nohyp} & Create an axiom \\
+	\end{tabular} 
+\end{table} 
+
+\paragraph{Usage}
+The code
+\begin{verbatim}
+\rulename{Rule}
+\prooftree
+  clause1 ... clauseN
+  \justifies
+  judgement
+\endprooftree
+\end{verbatim}
+produces
+\begin{equation*}
+\rulename{Rule}
+\prooftree
+  clause1\ ...\ clauseN
+  \justifies
+  judgement
+\endprooftree
+\end{equation*}
+
+\subsection{Code}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\wass$ & \texttt{wass} &  \\ 
+		$\condif{b}{c_1}{c_2}$ & \texttt{condif\{b\}\{$c_1$\}\{$c_2$\}} &  \\ 
+		$\while{b}{c}$ & \texttt{while\{b\}\{c\}} &  \\ 
+		$\repeatuntil{c}{b}$ & \texttt{repeatuntil\{c\}\{b\}} &  \\ 
+		$\ecc$ & \texttt{ecc} &  \\
+		$\unvar$ & \texttt{unvar} &  \\
+		$\id$ & \texttt{id} &  \\
+		$\cond$ & \texttt{cond} &  \\
+		$\seq$ & \texttt{seq} &  \\
+		$\ttv$ & \texttt{ttv} &  \\
+		$\ffv$ & \texttt{ffv} &  \\
+		$\divop$ & \texttt{divop} &  \\
+		$\modop$ & \texttt{modop} &  \\
+		$\andop$ & \texttt{andop} &  \\
+		$\orop$ & \texttt{orop} &  \\
+		$\notop$ & \texttt{notop} &  \\
+		$\type$ & \texttt{type} & Type of a constant \\
+	\end{tabular} 
+\end{table} 
+
+
+
+\subsection{Abstract Interpretation}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline
+		$\lub$ & \texttt{lub} &  \\
+		$\glb$ & \texttt{glb} &  \\
+		$\lfp$ & \texttt{lfp} &  \\
+		$\gfp$ & \texttt{gfp} &  \\
+		$\widen$ & \texttt{widen} & Generic widening \\
+	\end{tabular} 
+\end{table}
+
+
+\subsection{Utils}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline 
+		$\mactext{text}$ & \texttt{mactext\{text\}} & Typewriter font in math environment \\
+		\Cplusplus & \texttt{Cplusplus} &  \\
+		Create the footnote ``FIXME: text'' & \texttt{fixme{text}} & \\
+		Create the footnote ``TODO: text'' & \texttt{todo{text}} & \\
+	\end{tabular} 
+\end{table}
+
+
+\subsection{Other}
+
+\subsection{Configuration sets}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline
+		$\NTe$ & \texttt{aaa} &  \\
+		$\NTb$ & \texttt{aaa} &  \\
+		$\NTd$ & \texttt{aaa} &  \\
+		$\NTg$ & \texttt{aaa} &  \\
+		$\NTs$ & \texttt{aaa} &  \\
+		$\NTk$ & \texttt{aaa} &  \\
+		$\Te$ & \texttt{aaa} &  \\
+		$\Tb$ & \texttt{aaa} &  \\
+		$\Td$ & \texttt{aaa} &  \\
+		$\Tg$ & \texttt{aaa} &  \\
+		$\Ts$ & \texttt{aaa} &  \\
+		$\Tk$ & \texttt{aaa} &  \\
+	\end{tabular} 
+\end{table}
+
+\subsubsection{Custom configuration sets}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline
+		$\NT{x}$ & \texttt{aaa} &  \\
+		$\NTq$ & \texttt{aaa} &  \\
+		$\Tq$ & \texttt{aaa} &  \\
+	\end{tabular} 
+\end{table}
+
+\subsubsection{Denotable values}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline
+		$\dVal$ & \texttt{aaa} &  \\
+		$\sVal$ & \texttt{aaa} &  \\
+		$\sval$ & \texttt{aaa} &  \\
+	\end{tabular} 
+\end{table}
+
+\subsection{Unknown}
+
+\begin{table}[H]
+	\def\arraystretch{1.5}
+	\begin{tabular}{c l l}
+		\textbf{Symbol} & \textbf{Encoding} & \textbf{Description} \\
+		\hline
+		$\FI$ & \texttt{aaa} &  \\
+		$\DI$ & \texttt{aaa} &  \\
+		$\SL$ & \texttt{aaa} &  \\
+		$\Env$ & \texttt{aaa} &  \\
+	\end{tabular} 
+\end{table}
+
+
+%%% Control modes.
+%\newcommand*{\CtrlMode}{\mathord{\mathrm{CtrlMode}}}
+%\newcommand*{\cm}{\mathrm{cm}}
+%%% Branch modes.
+%%\newcommand*{\BranchMode}{\mathord{\mathrm{BranchMode}}}
+%\newcommand*{\GotoMode}{\mathord{\mathrm{GotoMode}}}
+%\newcommand*{\SwitchMode}{\mathord{\mathrm{SwitchMode}}}
+%\newcommand*{\cmgoto}{\mathop{\mathrm{goto}}\nolimits}
+%\newcommand*{\cmswitch}{\mathop{\mathrm{switch}}\nolimits}
+%\newcommand*{\cmbreak}{\mathop{\mathrm{break}}\nolimits}
+%\newcommand*{\cmcontinue}{\mathop{\mathrm{continue}}\nolimits}
+%\newcommand*{\cmreturn}{\mathop{\mathrm{return}}\nolimits}
+%%% Exec mode.
+%\newcommand*{\cmexec}{\mathrm{exec}}
+%%% Value mode.
+%\newcommand*{\ValMode}{\mathord{\mathrm{ValMode}}}
+%\newcommand*{\cmvalue}{\mathop{\mathrm{value}}\nolimits}
+%%% Environment mode.
+%\newcommand*{\EnvMode}{\mathord{\mathrm{EnvMode}}}
+%\newcommand*{\cmenv}{\mathrm{env}}
+%%% Exception modes.
+%\newcommand*{\ExceptMode}{\mathord{\mathrm{ExceptMode}}}
+%\newcommand*{\cmexcept}{\mathrm{except}}
+%
+%%% Control states.
+%\newcommand*{\CtrlState}{\mathord{\mathrm{CtrlState}}}
+%\newcommand*{\cs}{\mathord{\mathrm{cs}}}
+%%% Value states.
+%\newcommand*{\ValState}{\mathord{\mathrm{ValState}}}
+%\newcommand*{\valstate}{\upsilon}
+%%% Environment states.
+%%\newcommand*{\EnvState}{\mathord{\mathrm{EnvState}}}
+%%% Exception states.
+%\newcommand*{\ExceptState}{\mathord{\mathrm{ExceptState}}}
+%\newcommand*{\exceptstate}{\varepsilon}
+%
+%%% Keywords.
+%\newcommand*{\kw}[1]{\mathop{\textup{\textbf{#1}}}}
+%
+%\newcommand*{\bop}{\mathbin{\mathrm{bop}}}
+%%\newcommand*{\uop}{\mathop{\mathrm{uop}}}
+%
+%%% Exceptions.
+%\newcommand*{\RTSExcept}{\mathord{\mathrm{RTSExcept}}}
+%\newcommand*{\rtsexcept}{\chi}
+%\newcommand*{\Except}{\mathord{\mathrm{Except}}}
+%\newcommand*{\except}{\xi}
+%\newcommand*{\none}{\mathtt{none}}
+%\newcommand*{\divbyzero}{\mathtt{divbyzero}}
+%\newcommand*{\stkovflw}{\mathtt{stkovflw}}
+%\newcommand*{\datovflw}{\mathtt{datovflw}}
+%\newcommand*{\memerror}{\mathtt{memerror}}
+%%\newcommand*{\inerror}{\mathtt{inerror}}
+%%\newcommand*{\nullptr}{\mathtt{nullptr}}
+%%\newcommand*{\outofboundsptr}{\mathtt{outofboundsptr}}
+%
+%%% Flags for terminal configurations of catch clauses.
+%\newcommand*{\caught}{\mathtt{caught}}
+%\newcommand*{\uncaught}{\mathtt{uncaught}}
+%
+%%% Static semantics.
+%\newcommand*{\TEnv}{\mathord{\mathrm{TEnv}}}
+%\newcommand*{\tinteger}{\mathrm{integer}}
+%\newcommand*{\tboolean}{\mathrm{boolean}}
+%\newcommand*{\trtsexcept}{\mathrm{rts\_exception}}
+%
+%%% Memory structures.
+%\newcommand*{\Loc}{\mathord{\mathrm{Loc}}}
+%\newcommand*{\Ind}{\mathrm{Ind}}
+%\newcommand*{\Addr}{\mathrm{Addr}}
+%\newcommand*{\Map}{\mathrm{Map}}
+%%\newcommand*{\eMap}{\mathrm{eMap}}
+%\newcommand*{\Stack}{\mathord{\mathrm{Stack}}}
+%\newcommand*{\Mem}{\mathord{\mathrm{Mem}}}
+%\newcommand*{\stknew}{\mathop{\mathrm{new}_\mathrm{s}}\nolimits}
+%\newcommand*{\datnew}{\mathop{\mathrm{new}_\mathrm{d}}\nolimits}
+%\newcommand*{\txtnew}{\mathop{\mathrm{new}_\mathrm{t}}\nolimits}
+%\newcommand*{\heapnew}{\mathop{\mathrm{new}_\mathrm{h}}\nolimits}
+%\newcommand*{\heapdel}{\mathop{\mathrm{delete}_\mathrm{h}}\nolimits}
+%\newcommand*{\datcleanup}{\mathop{\mathrm{cleanup}_\mathrm{d}}\nolimits}
+%\newcommand*{\smark}{\mathop{\mathrm{mark}_\mathrm{s}}\nolimits}
+%\newcommand*{\sunmark}{\mathop{\mathrm{unmark}_\mathrm{s}}\nolimits}
+%\newcommand*{\slink}{\mathop{\mathrm{link}_\mathrm{s}}\nolimits}
+%\newcommand*{\sunlink}{\mathop{\mathrm{unlink}_\mathrm{s}}\nolimits}
+%\newcommand*{\asmark}{\mathop{\mathrm{mark}_\mathrm{s}^\sharp}\nolimits}
+%\newcommand*{\asunmark}{\mathop{\mathrm{unmark}_\mathrm{s}^\sharp}\nolimits}
+%\newcommand*{\aslink}{\mathop{\mathrm{link}_\mathrm{s}^\sharp}\nolimits}
+%\newcommand*{\asunlink}{\mathop{\mathrm{unlink}_\mathrm{s}^\sharp}\nolimits}
+%\newcommand*{\aswiden}{\mathop{\mathrm{widen}}\nolimits}
+%\newcommand*{\sm}{\dag}
+%\newcommand*{\fm}{\ddag}
+%\newcommand*{\topmost}{\mathop{\mathrm{tf}}\nolimits}
+%%% Short forms of \datcleanup, \sunmark, \sunlink for table.
+%\newcommand*{\datcleanupshort}{\mathop{\mathrm{cu}_\mathrm{d}}\nolimits}
+%\newcommand*{\sunmarkshort}{\mathop{\mathrm{um}_\mathrm{s}}\nolimits}
+%\newcommand*{\sunlinkshort}{\mathop{\mathrm{ul}_\mathrm{s}}\nolimits}
+%
+%\newcommand*{\location}[1]{\mathord{#1 \; \mathrm{loc}}}
+%%\newcommand*{\saeval}{\mathop{\mathrm{aeval}}\nolimits}
+%%\newcommand*{\saupd}{\mathop{\mathrm{aupd}}\nolimits}
+%\newcommand*{\asupported}{\mathop{\mathrm{supported}^\sharp}\nolimits}
+%\newcommand*{\aeval}{\mathop{\mathrm{eval}^\sharp}\nolimits}
+%\newcommand*{\ceval}[1]{\mathop{\mathrm{eval}_{#1}}\nolimits}
+%
+%%% Additional macros for the extension to pointer and arrays:
+%%% Elementary types.
+%\newcommand*{\eType}{\mathrm{eType}}
+%\newcommand*{\eT}{\mathrm{eT}}
+%%% Elementary values.
+%%\newcommand*{\eValue}{\mathrm{eVal}}
+%%% Array types.
+%\newcommand*{\aType}{\mathrm{aType}}
+%\newcommand*{\aT}{\mathrm{aT}}
+%%% Record types.
+%\newcommand*{\rType}{\mathrm{rType}}
+%\newcommand*{\rT}{\mathrm{rT}}
+%%% Object types.
+%\newcommand*{\oType}{\mathrm{oType}}
+%\newcommand*{\oT}{\mathrm{oT}}
+%%% Function types.
+%\newcommand*{\fType}{\mathrm{fType}}
+%\newcommand*{\fT}{\mathrm{fT}}
+%%% Memory types.
+%\newcommand*{\mType}{\mathrm{mType}}
+%\newcommand*{\mT}{\mathrm{mT}}
+%%% Pointer types.
+%\newcommand*{\pType}{\mathrm{pType}}
+%\newcommand*{\pT}{\mathrm{pT}}
+%%% Offsets.
+%\newcommand*{\Offset}{\mathrm{Offset}}
+%\newcommand*{\nooffset}{\boxempty}
+%\newcommand*{\indexoffset}[1]{\mathopen{\boldsymbol{[}}{#1}\mathclose{\boldsymbol{]}}}
+%\newcommand*{\fieldoffset}[1]{\mathop{\boldsymbol{.}}{#1}}
+%%% Lvalues.
+%\newcommand*{\lValue}{\mathrm{LValue}}
+%\newcommand*{\lvalue}{\mathrm{lval}}
+%%% Rvalues.
+%\newcommand*{\rValue}{\mathrm{RValue}}
+%\newcommand*{\rvalue}{\mathrm{rval}}
+%%%
+%\newcommand*{\pointer}[1]{{#1}\boldsymbol{\ast}}
+%\newcommand*{\maddress}[1]{\mathop{\&}{#1}}
+%\newcommand*{\indirection}[1]{\mathop{\boldsymbol{\ast}}{#1}}
+%%%
+%\newcommand*{\locnull}{\mathord{l_\mathrm{null}}}
+%\newcommand*{\ptrmove}{{\mathop{\mathrm{ptrmove}}\nolimits}}
+%\newcommand*{\ptrdiff}{{\mathop{\mathrm{ptrdiff}}\nolimits}}
+%\newcommand*{\ptrcmp}{{\mathop{\mathrm{ptrcmp}}\nolimits}}
+%%%
+%\newcommand*{\arraysyntax}[3]{\kw{#1} {#2} \kw{of}\,{#3}}
+%\newcommand*{\arraytype}[2]{\arraysyntax{array}{#1}{#2}}
+%\newcommand*{\firstof}{{\mathop{\mathrm{firstof}}\nolimits}}
+%\newcommand*{\arrayindex}{\mathop{\mathrm{index}}\nolimits}
+%\newcommand*{\locindex}{\mathop{\mathrm{locindex}}\nolimits}
+%%%
+%\newcommand*{\recordsyntax}[3]{\kw{#1} {#2} \kw{of}\,{#3}}
+%\newcommand*{\recordtype}[2]{\recordsyntax{record}{#1}{#2}}
+%\newcommand*{\field}{\mathop{\mathrm{field}}\nolimits}
+%\newcommand*{\locfield}{\mathop{\mathrm{locfield}}\nolimits}
+
+%%% Additional macros for the extension for extra numeric types
+%%% Floating point types.
+%\newcommand*{\tfloat}{\mathrm{float}}
+%%% Numeric types
+%\newcommand*{\nType}{\mathrm{nType}}
+%\newcommand*{\nT}{\mathrm{nT}}
+
+%%% Abstracts.
+%\newcommand*{\Abstract}{\mathord{\mathrm{Abstract}}}
+%\newcommand*{\abs}{\mathord{\mathrm{abs}}}
+%
+%%% Integer part function.
+%\newcommand{\intp}{\mathop{\mathrm{int}}\nolimits}
+%
+%%% Concrete functions and operations.
+%% Aritmethic
+%\newcommand*{\conadd}{\mathbin{\boxplus}}
+%\newcommand*{\consub}{\mathbin{\boxminus}}
+%\newcommand*{\conmul}{\mathbin{\boxdot}}
+%\newcommand*{\condiv}{\mathbin{\boxslash}}
+%\newcommand*{\conmod}{\mathbin{\boxbar}}
+%% Boolean
+%\newcommand*{\coneq}{\mathbin{\circeq}}
+%\newcommand*{\conineq}{\mathbin{\leqq}}
+%\newcommand*{\conneg}{\mathbin{\daleth}}
+%\newcommand*{\conor}{\mathbin{\triangledown}}
+%\newcommand*{\conand}{\mathbin{\vartriangle}}
+%\newcommand*{\bneg}{\mathop{\neg}\nolimits}
+%
+%%% Abstract functions and operations.
+%% Domains
+%\newcommand*{\Sign}{\mathrm{Sign}}
+%\newcommand*{\AbBool}{\mathrm{AbBool}}
+%
+%% Aritmethic
+%\newcommand*{\absuminus}{\mathop{\ominus}\nolimits}
+%\newcommand*{\absadd}{\mathbin{\oplus}}
+%\newcommand*{\abssub}{\mathbin{\ominus}}
+%\newcommand*{\absmul}{\mathbin{\odot}}
+%\newcommand*{\absdiv}{\mathbin{\oslash}}
+%\newcommand*{\absmod}{\mathbin{\obar}}
+%% Boolean
+%\newcommand*{\abseq}{\mathrel{\triangleq}}
+%\newcommand*{\absneq}{\mathrel{\not\triangleq}}
+%\newcommand*{\absleq}{\mathrel{\trianglelefteq}}
+%\newcommand*{\abslt}{\mathrel{\vartriangleleft}}
+%\newcommand*{\absgeq}{\mathrel{\trianglerighteq}}
+%\newcommand*{\absgt}{\mathrel{\vartriangleright}}
+%\newcommand*{\absneg}{\mathrel{\circleddash}}
+%\newcommand*{\absor}{\mathrel{\ovee}}
+%\newcommand*{\absand}{\mathrel{\owedge}}
+%% Figures
+%\newcommand*{\signtop}{\top}
+%\newcommand*{\signbot}{\bot}
+%\newcommand*{\signge}{\mathord{\geq}}
+%\newcommand*{\signgt}{\mathord{>}}
+%\newcommand*{\signle}{\mathord{\leq}}
+%\newcommand*{\signlt}{\mathord{<}}
+%\newcommand*{\signeq}{\mathord{=}}
+%\newcommand*{\signne}{\mathord{\neq}}
+
+
+%\theoremstyle{definition}
+%\newtheorem{definizione}{Definizione}
+%\newtheorem{teorema}{Teorema}
+%\newtheorem{proposizione}{Proposizione}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{esercizio}{Esercizio}
+%
+
+
+\end{document}
